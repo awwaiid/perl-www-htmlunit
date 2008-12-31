@@ -90,7 +90,9 @@ use Inline (
   ),
 );
 
-=h2 $webClient = HtmlUnit->new($browser_name)
+=head1 METHODS
+
+=head2 $webClient = HtmlUnit->new($browser_name)
 
 This is just a shortcut for 
 
@@ -140,9 +142,6 @@ L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
       See the License for the specific language governing permissions and
       limitations under the License.
-
-=cut
-
 
 =cut
 
