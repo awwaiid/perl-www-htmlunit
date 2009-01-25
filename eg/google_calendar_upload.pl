@@ -1,7 +1,7 @@
 #!/usr/local/bin/perl
 
 use strict;
-use HtmlUnit;
+use WWW::HtmlUnit;
 
 # Put in your username and password, and then pass this script an .ics file.
 # It'll upload it into your default google calendar
@@ -27,7 +27,7 @@ if($ics_filename !~ /\.ics$/i) {
 }
 
 eval {
-my $webClient = HtmlUnit->new('FIREFOX_3');
+my $webClient = WWW::HtmlUnit->new('FIREFOX_3');
 my $page = $webClient->getPage("http://google.com/calendar/");
 
 my $login_form = $page->getElementById('gaia_loginform');

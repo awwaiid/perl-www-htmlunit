@@ -1,9 +1,9 @@
 #!/usr/bin/perl
 
 use strict;
-use HtmlUnit;
+use WWW::HtmlUnit;
 
-my $webClient = HtmlUnit->new('FIREFOX_3');
+my $webClient = WWW::HtmlUnit->new('FIREFOX_3');
 my $page = $webClient->getPage("http://google.com/");
 my $f = $page->getFormByName('f');
 my $submit = $f->getInputByName("btnG");
