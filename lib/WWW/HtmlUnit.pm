@@ -1,13 +1,13 @@
-package HtmlUnit;
+package WWW::HtmlUnit;
 
 =head1 NAME
 
-HtmlUnit - Inline::Java based wrapper of the HtmlUnit library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit library
 
 =head1 SYNOPSIS
 
-  use HtmlUnit;
-  my $webClient = HtmlUnit->new('FIREFOX_3');
+  use WWW::HtmlUnit;
+  my $webClient = WWW::HtmlUnit->new('FIREFOX_3');
   my $page = $webClient->getPage("http://google.com/");
   my $f = $page->getFormByName('f');
   my $submit = $f->getInputByName("btnG");
@@ -92,11 +92,11 @@ use Inline (
 
 =head1 METHODS
 
-=head2 $webClient = HtmlUnit->new($browser_name)
+=head2 $webClient = WWW::HtmlUnit->new($browser_name)
 
 This is just a shortcut for 
 
-  $webClient = HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
+  $webClient = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
 
 The optional $browser_name allows you to specify which browser version to pass
 to the WebClient->new method.
@@ -106,10 +106,10 @@ to the WebClient->new method.
 sub new {
   my ($class, $version) = @_;
   if($version) {
-    my $browser_version = eval "\$HtmlUnit::com::gargoylesoftware::htmlunit::BrowserVersion::$version";
-    return HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new($browser_version);
+    my $browser_version = eval "\$WWW::HtmlUnit::com::gargoylesoftware::htmlunit::BrowserVersion::$version";
+    return WWW::HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new($browser_version);
   } else {
-    return HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
+    return WWW::HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
   }
 }
 
