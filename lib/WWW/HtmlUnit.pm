@@ -7,7 +7,7 @@ WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit library
 =head1 SYNOPSIS
 
   use WWW::HtmlUnit;
-  my $webClient = WWW::HtmlUnit->new('FIREFOX_3');
+  my $webClient = WWW::HtmlUnit->new;
   my $page = $webClient->getPage("http://google.com/");
   my $f = $page->getFormByName('f');
   my $submit = $f->getInputByName("btnG");
