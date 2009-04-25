@@ -1,4 +1,8 @@
-Revision history for Perl extension HtmlUnit.
+Revision history for Perl extension WWW::HtmlUnit.
+
+0.04 2009.04.24.23.44
+  - Update to HtmlUnit 2.5
+  - Move into the WWW namespace
 
 0.03 2008.12.31.04.40
   - Update to HtmlUnit 2.4
@@ -8,6 +12,6 @@ Revision history for Perl extension HtmlUnit.
   - Fixed module description
   - Fixed the MANIFEST to actually include the jar files
 
-0.01  Tue Dec 30 01:45:03 2008
+0.01 2008.12.30.01.45
 	- Initial version
 
