@@ -99,7 +99,8 @@ This is just a shortcut for
   $webClient = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
 
 The optional $browser_name allows you to specify which browser version to pass
-to the WebClient->new method.
+to the WebClient->new method. You could pass "FIREFOX_3" for example, to make
+the engine especially try to emulate Firefox 3 quirks, I imagine.
 
 =cut
 
