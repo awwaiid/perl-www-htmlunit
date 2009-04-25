@@ -27,6 +27,9 @@ library really does is find the jars and load them up using Inline::Java.
 The reason all this is interesting? HtmlUnit has very good javascript support,
 so you can automate, scrape, or test javascript-required websites.
 
+See especially the HtmlUnit documentation on their site for deeper API
+documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
+
 =cut
 
 use strict;
