@@ -20,9 +20,9 @@ WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit library
 
 =head1 DESCRIPTION
 
-This is a wrapper around the HtmlUnit library. It includes the HtmlUnit jar
-itself and it's dependencies. All this library really does is find the jars and
-load them up using Inline::Java.
+This is a wrapper around the HtmlUnit library (HtmlUnit version 2.5 for this
+release). It includes the HtmlUnit jar itself and it's dependencies. All this
+library really does is find the jars and load them up using Inline::Java.
 
 The reason all this is interesting? HtmlUnit has very good javascript support,
 so you can automate, scrape, or test javascript-required websites.
@@ -124,13 +124,13 @@ L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2008 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+  Copyright (c) 2009 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
   modify it under the same terms as Perl itself.
 
   HtmlUnit library includes the following copyright:
 
-      Copyright (c) 2002-2008 Gargoyle Software Inc.
+      Copyright (c) 2002-2009 Gargoyle Software Inc.
 
       Licensed under the Apache License, Version 2.0 (the "License");
       you may not use this file except in compliance with the License.
