@@ -32,7 +32,7 @@ so you can automate, scrape, or test javascript-required websites.
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use File::Find;
 use vars qw( $jar_path );
