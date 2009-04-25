@@ -79,9 +79,9 @@ use Inline (
     commons-lang-2.4.jar
     commons-logging-1.1.1.jar
     cssparser-0.9.5.jar
-    htmlunit-2.4.jar
-    htmlunit-core-js-2.4.jar
-    nekohtml-1.9.11.jar
+    htmlunit-2.5.jar
+    htmlunit-core-js-2.5.jar
+    nekohtml-1.9.12.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar
