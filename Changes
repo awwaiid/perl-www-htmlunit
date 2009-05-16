@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::HtmlUnit.
 
+0.05 2009.05.16.19.40
+  - Fix jar search path a bit
+
 0.04 2009.04.24.23.44
   - Update to HtmlUnit 2.5
   - Move into the WWW namespace
