@@ -35,7 +35,7 @@ documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
 use strict;
 use warnings;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use File::Find;
 use vars qw( $jar_path );
