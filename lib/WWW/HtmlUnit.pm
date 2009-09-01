@@ -35,11 +35,7 @@ documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
 use strict;
 use warnings;
 
-our $VERSION = '0.05';
-
-use File::Find;
-use vars qw( $jar_path );
-
+our $VERSION = '0.06';
 
 sub find_jar_path {
     my $self = shift;
@@ -71,18 +67,9 @@ sub find_jar_path {
     # return $path;
 # }
 
-BEGIN {
-  $jar_path = find_jar_path();
-}
-
-use Inline (
-  Java => 'STUDY',
-  STUDY => [
-    'com.gargoylesoftware.htmlunit.WebClient',
-    'com.gargoylesoftware.htmlunit.BrowserVersion',
-  ],
-  AUTOSTUDY => 1,
-  CLASSPATH => join ':', map { "$jar_path/$_" } qw(
+sub collect_default_jars {
+    my $jar_path = find_jar_path();
+    return join ':', map { "$jar_path/$_" } qw(
     commons-codec-1.3.jar
     commons-collections-3.2.1.jar
     commons-httpclient-3.1.jar
@@ -98,8 +85,38 @@ use Inline (
     xalan-2.7.1.jar
     xercesImpl-2.8.1.jar
     xml-apis-1.3.04.jar
-  ),
-);
+  );
+}
+
+=head1 MODULE IMPORT PARAMETERS
+
+If you need to include extra .jar files, you can do:
+
+  use HtmlUnit jars => ['/path/to/blah.jar'];
+
+and that wil be added to the list of jars for Inline::Java to autostudy.
+
+=cut
+
+sub import {
+    my $class = shift;
+    my %parameters = @_;
+    my $custom_jars = "";
+    if ($parameters{jars}) {
+        $custom_jars = join(':', @{$parameters{jars}});
+    }
+
+    require Inline;
+    Inline->import(
+      Java => 'STUDY',
+      STUDY => [
+        'com.gargoylesoftware.htmlunit.WebClient',
+        'com.gargoylesoftware.htmlunit.BrowserVersion',
+      ],
+      AUTOSTUDY => 1,
+      CLASSPATH => collect_default_jars() . ":" . $custom_jars
+    );
+}
 
 =head1 METHODS
 
