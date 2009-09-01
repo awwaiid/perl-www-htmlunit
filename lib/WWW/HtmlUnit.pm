@@ -30,6 +30,20 @@ so you can automate, scrape, or test javascript-required websites.
 See especially the HtmlUnit documentation on their site for deeper API
 documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
 
+=head1 INSTALLING
+
+There is one problem that I fun into when installing Inline::Java, and thus
+WWW::HtmlUnit, which is telling the installer where to find your java home. It
+turns out this is really really easy, just define the JAVA_HOME environment
+variable before you start your CPAN shell / installer. I do this in
+Debian/Ubuntu:
+
+  apt-get install sun-java6-jdk
+  JAVA_HOME=/usr/lib/jvm/java-6-sun cpan WWW::HtmlUnit
+
+and everything works the way I want! I should submit a patch to the error
+message that Inline::Java spits out...
+
 =cut
 
 use strict;
@@ -45,6 +59,7 @@ sub find_jar_path {
 }
 
 # This way might be better?
+# use File::Find;
 # sub find_jar_path {
     # my $self = shift;
     # my $module = 'WWW/HtmlUnit';
@@ -142,6 +157,21 @@ sub new {
   }
 }
 
+=head1 DEPENDENCIES
+
+When installed using the CPAN shell, all dependencies besides java itself will
+be installed. This includes the HtmlUnit jar files, and in fact those files
+make up the bulk of the distribution.
+
+=head1 TODO
+
+=over 4
+
+=item * Capture HtmlUnit output to a variable
+
+=item * Use that to have a quiet-mode
+
+=back
 
 =head1 SEE ALSO
 
