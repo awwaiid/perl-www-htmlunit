@@ -3,7 +3,7 @@
 use strict;
 use WWW::HtmlUnit;
 
-my $webClient = WWW::HtmlUnit->new();
+my $webClient = WWW::HtmlUnit->new('FIREFOX_3');
 my $page = $webClient->getPage("http://google.com/");
 my $f = $page->getFormByName('f');
 my $submit = $f->getInputByName("btnG");
