@@ -49,7 +49,7 @@ message that Inline::Java spits out...
 use strict;
 use warnings;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 sub find_jar_path {
     my $self = shift;
