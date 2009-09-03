@@ -21,4 +21,6 @@ lib/WWW/HtmlUnit/jar/serializer-2.7.1.jar
 lib/WWW/HtmlUnit/jar/xalan-2.7.1.jar
 lib/WWW/HtmlUnit/jar/xercesImpl-2.8.1.jar
 lib/WWW/HtmlUnit/jar/xml-apis-1.3.04.jar
-t/HtmlUnit.t
+t/00_basic.t
+t/01_hello.html
+t/01_hello.t
