@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.5 library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.6 library
 
 =head1 SYNOPSIS
 
