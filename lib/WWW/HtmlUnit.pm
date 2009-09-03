@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.5 library
 
 =head1 SYNOPSIS
 
@@ -162,6 +162,17 @@ sub new {
 When installed using the CPAN shell, all dependencies besides java itself will
 be installed. This includes the HtmlUnit jar files, and in fact those files
 make up the bulk of the distribution.
+
+=head1 TIPS
+
+How do I do HTTP authentication?
+
+  my $credentialsProvider = $webclient->getCredentialsProvider;                           
+  $credentialsProvider->addCredentials($username, $password);                
+
+How do I turn off SSL certificate checking?
+
+  $webclient->setUseInsecureSSL(1);
 
 =head1 TODO
 
