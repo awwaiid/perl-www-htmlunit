@@ -85,22 +85,22 @@ sub find_jar_path {
 sub collect_default_jars {
     my $jar_path = find_jar_path();
     return join ':', map { "$jar_path/$_" } qw(
-    commons-codec-1.3.jar
-    commons-collections-3.2.1.jar
-    commons-httpclient-3.1.jar
-    commons-io-1.4.jar
-    commons-lang-2.4.jar
-    commons-logging-1.1.1.jar
-    cssparser-0.9.5.jar
-    htmlunit-2.5.jar
-    htmlunit-core-js-2.5.jar
-    nekohtml-1.9.12.jar
-    sac-1.3.jar
-    serializer-2.7.1.jar
-    xalan-2.7.1.jar
-    xercesImpl-2.8.1.jar
-    xml-apis-1.3.04.jar
-  );
+      commons-codec-1.4.jar
+      commons-collections-3.2.1.jar
+      commons-httpclient-3.1.jar
+      commons-io-1.4.jar
+      commons-lang-2.4.jar
+      commons-logging-1.1.1.jar
+      cssparser-0.9.5.jar
+      htmlunit-2.6.jar
+      htmlunit-core-js-2.6.jar
+      nekohtml-1.9.13.jar
+      sac-1.3.jar
+      serializer-2.7.1.jar
+      xalan-2.7.1.jar
+      xercesImpl-2.9.1.jar
+      xml-apis-1.3.04.jar
+    );
 }
 
 =head1 MODULE IMPORT PARAMETERS
