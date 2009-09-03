@@ -1,5 +1,9 @@
 Revision history for Perl extension WWW::HtmlUnit.
 
+0.06 2009.09.03.01.26
+  - Add jars parameter (thanks Martin Drashkov!)
+  - Update documentation
+
 0.05 2009.05.16.19.40
   - Fix jar search path a bit
 
