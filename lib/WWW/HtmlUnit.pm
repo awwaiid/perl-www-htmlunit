@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.6 library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.7 library
 
 =head1 SYNOPSIS
 
@@ -49,7 +49,7 @@ message that Inline::Java spits out...
 use strict;
 use warnings;
 
-our $VERSION = '0.07';
+our $VERSION = '0.08';
 
 sub find_jar_path {
   my $self = shift;
@@ -92,9 +92,9 @@ sub collect_default_jars {
     commons-lang-2.4.jar
     commons-logging-1.1.1.jar
     cssparser-0.9.5.jar
-    htmlunit-2.6.jar
-    htmlunit-core-js-2.6.jar
-    nekohtml-1.9.13.jar
+    htmlunit-2.7.jar
+    htmlunit-core-js-2.7.jar
+    nekohtml-1.9.14.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar
