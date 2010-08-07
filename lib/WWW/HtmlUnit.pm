@@ -20,7 +20,7 @@ WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.7 library
 
 =head1 DESCRIPTION
 
-This is a wrapper around the HtmlUnit library (HtmlUnit version 2.5 for this
+This is a wrapper around the HtmlUnit library (HtmlUnit version 2.7 for this
 release). It includes the HtmlUnit jar itself and it's dependencies. All this
 library really does is find the jars and load them up using Inline::Java.
 
@@ -32,7 +32,7 @@ documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
 
 =head1 INSTALLING
 
-There is one problem that I fun into when installing Inline::Java, and thus
+There is one problem that I run into when installing Inline::Java, and thus
 WWW::HtmlUnit, which is telling the installer where to find your java home. It
 turns out this is really really easy, just define the JAVA_HOME environment
 variable before you start your CPAN shell / installer. I do this in
@@ -127,6 +127,7 @@ sub import {
     STUDY => [
       'com.gargoylesoftware.htmlunit.WebClient',
       'com.gargoylesoftware.htmlunit.BrowserVersion',
+      'com.gargoylesoftware.htmlunit.util.Cookie',
     ],
     AUTOSTUDY => 1,
     CLASSPATH => collect_default_jars() . ":" . $custom_jars
