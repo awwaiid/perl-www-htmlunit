@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.7 library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.8 library
 
 =head1 SYNOPSIS
 
@@ -20,7 +20,7 @@ WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.7 library
 
 =head1 DESCRIPTION
 
-This is a wrapper around the HtmlUnit library (HtmlUnit version 2.7 for this
+This is a wrapper around the HtmlUnit library (HtmlUnit version 2.8 for this
 release). It includes the HtmlUnit jar itself and it's dependencies. All this
 library really does is find the jars and load them up using Inline::Java.
 
@@ -32,14 +32,16 @@ documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
 
 =head1 INSTALLING
 
-There is one problem that I run into when installing Inline::Java, and thus
-WWW::HtmlUnit, which is telling the installer where to find your java home. It
-turns out this is really really easy, just define the JAVA_HOME environment
-variable before you start your CPAN shell / installer. I do this in
-Debian/Ubuntu:
+There are two problems that I run into when installing L<Inline::Java>, and
+thus L<WWW::HtmlUnit>, which is telling the installer where to find your java
+home and that the L<Inline::Java> test suite is broken. It turns out this is
+really really easy, just define the JAVA_HOME environment variable before you
+start your CPAN shell / installer. And for the L<Java::Inline> test suite...
+well just skip it (using -n with cpanm). I do this in Debian/Ubuntu:
 
-  apt-get install sun-java6-jdk
-  JAVA_HOME=/usr/lib/jvm/java-6-sun cpan WWW::HtmlUnit
+  apt-get install default-jdk
+  JAVA_HOME=/usr/lib/jvm/default-java cpanm -n Inline::Java
+  cpanm WWW::HtmlUnit
 
 and everything works the way I want! I should submit a patch to the error
 message that Inline::Java spits out...
@@ -49,7 +51,7 @@ message that Inline::Java spits out...
 use strict;
 use warnings;
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 sub find_jar_path {
   my $self = shift;
@@ -85,15 +87,18 @@ sub find_jar_path {
 sub collect_default_jars {
   my $jar_path = find_jar_path();
   return join ':', map { "$jar_path/$_" } qw(
+    apache-mime4j-0.6.jar
     commons-codec-1.4.jar
     commons-collections-3.2.1.jar
-    commons-httpclient-3.1.jar
     commons-io-1.4.jar
     commons-lang-2.4.jar
     commons-logging-1.1.1.jar
     cssparser-0.9.5.jar
-    htmlunit-2.7.jar
-    htmlunit-core-js-2.7.jar
+    htmlunit-2.8.jar
+    htmlunit-core-js-2.8.jar
+    httpclient-4.0.1.jar
+    httpcore-4.0.1.jar
+    httpmime-4.0.1.jar
     nekohtml-1.9.14.jar
     sac-1.3.jar
     serializer-2.7.1.jar
@@ -195,24 +200,26 @@ L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2009 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+  Copyright (c) 2009-2010 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
   modify it under the same terms as Perl itself.
 
   HtmlUnit library includes the following copyright:
 
-      Copyright (c) 2002-2009 Gargoyle Software Inc.
-
-      Licensed under the Apache License, Version 2.0 (the "License");
-      you may not use this file except in compliance with the License.
-      You may obtain a copy of the License at
-      http://www.apache.org/licenses/LICENSE-2.0
-
-      Unless required by applicable law or agreed to in writing, software
-      distributed under the License is distributed on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-      See the License for the specific language governing permissions and
-      limitations under the License.
+    /*
+     * Copyright (c) 2002-2010 Gargoyle Software Inc.
+     *
+     * Licensed under the Apache License, Version 2.0 (the "License");
+     * you may not use this file except in compliance with the License.
+     * You may obtain a copy of the License at
+     * http://www.apache.org/licenses/LICENSE-2.0
+     *
+     * Unless required by applicable law or agreed to in writing, software
+     * distributed under the License is distributed on an "AS IS" BASIS,
+     * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     * See the License for the specific language governing permissions and
+     * limitations under the License.
+     */
 
 =cut
 
