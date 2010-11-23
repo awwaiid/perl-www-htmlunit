@@ -30,3 +30,5 @@ README
 t/00_basic.t
 t/01_hello.html
 t/01_hello.t
+t/02_hello_sweet.html
+t/02_hello_sweet.t
