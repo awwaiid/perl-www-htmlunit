@@ -192,7 +192,7 @@ How do I turn off SSL certificate checking?
 
 =head1 SEE ALSO
 
-L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
+L<WWW::HtmlUnit::Sweet>, L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
 
 =head1 AUTHOR
 
