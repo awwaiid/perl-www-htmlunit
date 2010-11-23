@@ -1,5 +1,8 @@
 #!/usr/local/bin/perl
 
+# NOTE! I think this doesn't work anymore because of some google javascript
+# funny business :(
+
 use strict;
 use WWW::HtmlUnit;
 
