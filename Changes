@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::HtmlUnit.
 
+0.11 2010.11.22
+  - Oops, forgot to update MANIFEST
+
 0.10 2010.11.22
   - Add WWW::HtmlUnit::Sweet
   - Add 'study' like 'jars' import param (Fred Castellano)
