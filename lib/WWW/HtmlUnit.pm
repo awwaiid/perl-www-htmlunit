@@ -214,6 +214,8 @@ How do I turn off SSL certificate checking?
 
 =item * Use that to have a quiet-mode
 
+=item * Include lungching's confirmation handler code
+
 =back
 
 =head1 SEE ALSO
