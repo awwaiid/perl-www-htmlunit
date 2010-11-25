@@ -152,8 +152,8 @@ sub import {
       'com.gargoylesoftware.htmlunit.BrowserVersion',
       'com.gargoylesoftware.htmlunit.util.Cookie',
   );    
-  if ($parameters{'STUDY'}) {
-      push(@STUDY, @{$parameters{'STUDY'}}, @{$parameters{'study'}});
+  if ($parameters{'study'}) {
+      push(@STUDY, @{$parameters{'study'}});
   }
 
   require Inline;
