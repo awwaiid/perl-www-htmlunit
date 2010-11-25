@@ -65,7 +65,7 @@ Represents a web browser. This is what C<< WWW::HtmlUnit->new >> returns.
 
 A single HTML Page.
 
-=item L<HtmlUnit|http://htmlunit.sourceforge.net/apidocs/com/gargoylesoftware/htmlunit/html/HtmlElement.html>
+=item L<HtmlElement|http://htmlunit.sourceforge.net/apidocs/com/gargoylesoftware/htmlunit/html/HtmlElement.html>
 
 An individual HTML element (node).
 
@@ -73,7 +73,6 @@ An individual HTML element (node).
 
 Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a
 little like L<WWW::Mechanize>, but not really.
-
 
 =cut
 
@@ -122,9 +121,9 @@ classes, you can do:
     jars => ['/path/to/blah.jar'],
     study => ['class.to.study'];
 
-and that wil be added to the list of jars for L<Inline::Java> to autostudy, and
-add to the list of classes for L<Inline::Java> to immediately study. A class
-must be on the study list to be directly instantiated.
+and that will be added to the list of jars for L<Inline::Java> to autostudy,
+and add to the list of classes for L<Inline::Java> to immediately study. A
+class must be on the study list to be directly instantiated.
 
 Whether you ask for it or not, WebClient, BrowserVersion, and Cookie (each in
 the com.gargoylesoftware.htmlunit package) are studied. You can get to studied
