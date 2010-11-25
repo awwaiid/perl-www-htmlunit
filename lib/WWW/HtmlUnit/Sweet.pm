@@ -6,9 +6,9 @@ WWW::HtmlUnit::Sweet - Wrapper around WWW::HtmlUnit to add some sweetness
 
 =head1 SYNOPSIS
 
-	use WWW::HtmlUnit::Sweet;
-	my $agent = WWW::HtmlUnit::Sweet->new;
-  
+  use WWW::HtmlUnit::Sweet;
+  my $agent = WWW::HtmlUnit::Sweet->new;
+
   $agent->getPage('http://google.com/');
 
   # Type into the currently focused element
@@ -20,8 +20,8 @@ WWW::HtmlUnit::Sweet - Wrapper around WWW::HtmlUnit to add some sweetness
 =head1 DESCRIPTION
 
 Using L<WWW::HtmlUnit> as a foundation, this adds some convenience things. The
-main addition is that the $agent you get from new does some AUTOLOAD things to
-allow you to treat the $agent as either a browser, a window, or a page. That
+main addition is that the $agent you get from ->new does some AUTOLOAD things
+to allow you to treat the $agent as either a browser, a window, or a page. That
 way you can treat it a lot more like a L<WWW::Mechanize> object.
 
 This module might change drastically, buyer beware!
