@@ -79,7 +79,7 @@ little like L<WWW::Mechanize>, but not really.
 use strict;
 use warnings;
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 sub find_jar_path {
   my $self = shift;

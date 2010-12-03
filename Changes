@@ -1,5 +1,12 @@
 Revision history for Perl extension WWW::HtmlUnit.
 
+0.13 2010.12.03
+  - Add clickhandler (thanks lungching!)
+
+0.12 2010.11.25
+  - Fix 'study' usage
+  - Minor documentation fixes
+
 0.11 2010.11.22
   - Oops, forgot to update MANIFEST
 
