@@ -1,40 +1,157 @@
-HtmlUnit version 0.05
-=====================
+NAME
+    WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.8 library
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+SYNOPSIS
+      use WWW::HtmlUnit;
+      my $webClient = WWW::HtmlUnit->new;
+      my $page = $webClient->getPage("http://google.com/");
+      my $f = $page->getFormByName('f');
+      my $submit = $f->getInputByName("btnG");
+      my $query  = $f->getInputByName("q");
+      $page = $query->type("HtmlUnit");
+      $page = $query->type("\n");
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+      my $content = $page->asXml;
+      print "Result:\n$content\n\n";
 
-INSTALLATION
+DESCRIPTION
+    This is a wrapper around the HtmlUnit library (HtmlUnit version 2.8 for
+    this release). It includes the HtmlUnit jar itself and it's
+    dependencies. All this library really does is find the jars and load
+    them up using Inline::Java.
 
-To install this module type the following:
+    The reason all this is interesting? HtmlUnit has very good javascript
+    support, so you can automate, scrape, or test javascript-required
+    websites.
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+    See especially the HtmlUnit documentation on their site for deeper API
+    documentation, <http://htmlunit.sourceforge.net/apidocs/>.
+
+INSTALLING
+    There are two problems that I run into when installing Inline::Java, and
+    thus WWW::HtmlUnit, which is telling the installer where to find your
+    java home and that the Inline::Java test suite is broken. It turns out
+    this is really really easy, just define the JAVA_HOME environment
+    variable before you start your CPAN shell / installer. And for the
+    Java::Inline test suite... well just skip it (using -n with cpanm). I do
+    this in Debian/Ubuntu:
+
+      apt-get install default-jdk
+      JAVA_HOME=/usr/lib/jvm/default-java cpanm -n Inline::Java
+      cpanm WWW::HtmlUnit
+
+    and everything works the way I want!
+
+    NOTE: I've also had good success installing the beta version of
+    Inline::Java, at the time of the writing version 0.52_90. I didn't have
+    to pass the '-n' to bypass the test suite with the beta version.
+
+DOCUMENTATION
+    You can get the bulk of the documentation directly from the <HtmlUnit
+    apidoc site>. Since WWW::HtmlUnit is mostly a wrapper around the real
+    Java API, what you actually have to do is translate some of the java
+    notation into perl notation. Mostly this is replacing '.' with '->'.
+
+    Key classes that you might want to look at:
+
+    <WebClient>
+        Represents a web browser. This is what "WWW::HtmlUnit->new" returns.
+
+    <HtmlPage>
+        A single HTML Page.
+
+    <HtmlElement>
+        An individual HTML element (node).
+
+    Also see WWW::HtmlUnit::Sweet for a way to pretend that HtmlUnit works a
+    little like WWW::Mechanize, but not really.
+
+MODULE IMPORT PARAMETERS
+    If you need to include extra .jar files, and/or if you want to study
+    more java classes, you can do:
+
+      use HtmlUnit
+        jars => ['/path/to/blah.jar'],
+        study => ['class.to.study'];
+
+    and that will be added to the list of jars for Inline::Java to
+    autostudy, and add to the list of classes for Inline::Java to
+    immediately study. A class must be on the study list to be directly
+    instantiated.
+
+    Whether you ask for it or not, WebClient, BrowserVersion, and Cookie
+    (each in the com.gargoylesoftware.htmlunit package) are studied. You can
+    get to studied classes by adding WWW::HtmlUnit:: to their package name.
+    So, you could make a cookie like this:
+
+      my $cookie = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::Cookie->new($name, $value);
+      $webClient->getCookieManager->addCookie($cookie);
+
+    Which is, incidentally, just the sort of thing that I should wrap in
+    WWW::HtmlUnit::Sweet :)
+
+METHODS
+  $webClient = WWW::HtmlUnit->new($browser_name)
+    This is just a shortcut for
+
+      $webClient = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
+
+    The optional $browser_name allows you to specify which browser version
+    to pass to the WebClient->new method. You could pass "FIREFOX_3" for
+    example, to make the engine especially try to emulate Firefox 3 quirks,
+    I imagine.
 
 DEPENDENCIES
+    When installed using the CPAN shell, all dependencies besides java
+    itself will be installed. This includes the HtmlUnit jar files, and in
+    fact those files make up the bulk of the distribution.
 
-This module requires these other modules and libraries:
+TIPS
+    How do I do HTTP authentication?
 
-  blah blah blah
+      my $credentialsProvider = $webclient->getCredentialsProvider;                           
+      $credentialsProvider->addCredentials($username, $password);
 
-COPYRIGHT AND LICENCE
+    How do I turn off SSL certificate checking?
 
-Put the correct copyright and licence information here.
+      $webclient->setUseInsecureSSL(1);
 
-Copyright (C) 2008 by awwaiid
+    Need to handle alerts or confirmation dialogs? We (thanks lungching!)
+    wrote a wee bit of java to make this easy. For now, see
+    "03_clickhandler.t" in t.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.10.0 or,
-at your option, any later version of Perl 5 you may have available.
+TODO
+    *   Capture HtmlUnit output to a variable
 
+    *   Use that to have a quiet-mode
+
+    *   Document lungching's confirmation handler code, automate build
+
+SEE ALSO
+    WWW::HtmlUnit::Sweet, <http://htmlunit.sourceforge.net/>, Inline::Java
+
+AUTHOR
+      Brock Wilcox <awwaiid@thelackthereof.org> - http://thelackthereof.org/
+
+COPYRIGHT
+      Copyright (c) 2009-2010 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+      reserved.  This program is free software; you can redistribute it and/or
+      modify it under the same terms as Perl itself.
+
+      HtmlUnit library includes the following copyright:
+
+        /*
+         * Copyright (c) 2002-2010 Gargoyle Software Inc.
+         *
+         * Licensed under the Apache License, Version 2.0 (the "License");
+         * you may not use this file except in compliance with the License.
+         * You may obtain a copy of the License at
+         * http://www.apache.org/licenses/LICENSE-2.0
+         *
+         * Unless required by applicable law or agreed to in writing, software
+         * distributed under the License is distributed on an "AS IS" BASIS,
+         * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         * See the License for the specific language governing permissions and
+         * limitations under the License.
+         */
 
