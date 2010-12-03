@@ -109,6 +109,7 @@ sub collect_default_jars {
     xalan-2.7.1.jar
     xercesImpl-2.9.1.jar
     xml-apis-1.3.04.jar
+    htmlunit-confirmhandler-2.8.jar
   );
 }
 
@@ -150,6 +151,8 @@ sub import {
       'com.gargoylesoftware.htmlunit.WebClient',
       'com.gargoylesoftware.htmlunit.BrowserVersion',
       'com.gargoylesoftware.htmlunit.util.Cookie',
+      'com.gargoylesoftware.htmlunit.CollectingAlertHandler',
+      'com.gargoylesoftware.htmlunit.ClickConfirmHandler',
   );    
   if ($parameters{'study'}) {
       push(@STUDY, @{$parameters{'study'}});
@@ -205,6 +208,9 @@ How do I turn off SSL certificate checking?
 
   $webclient->setUseInsecureSSL(1);
 
+Need to handle alerts or confirmation dialogs? We (thanks lungching!) wrote a
+wee bit of java to make this easy. For now, see L<t/03_clickhandler.t>.
+
 =head1 TODO
 
 =over 4
@@ -213,7 +219,7 @@ How do I turn off SSL certificate checking?
 
 =item * Use that to have a quiet-mode
 
-=item * Include lungching's confirmation handler code
+=item * Document lungching's confirmation handler code, automate build
 
 =back
 
