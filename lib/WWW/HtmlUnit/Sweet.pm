@@ -154,12 +154,6 @@ sub AUTOLOAD {
 	return $retval;
 }
 
-=head1 TODO
-
-Add more documentation and examples :)
-
-=cut
-
 
 package WWW::HtmlUnit::com::gargoylesoftware::htmlunit::html::HtmlSelect;
 
@@ -175,6 +169,10 @@ sub get_option {
 	}
 	die "Must pass either text or value";
 }
+
+=head1 TODO
+
+Add more documentation and examples and sweetness :)
 
 =head1 SEE ALSO
 

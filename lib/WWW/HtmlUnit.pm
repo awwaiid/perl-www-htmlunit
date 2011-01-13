@@ -28,7 +28,7 @@ See especially the HtmlUnit documentation on their site for deeper API documenta
 
 =head1 INSTALLING
 
-There is one special thing that I've run into when installing L<Inline::Java>, and thus L<WWW::HtmlUnit>, which is telling the installer where to find your java home. It turns out this is really really easy, just define the JAVA_HOME environment variable before you start your CPAN shell / installer (sudo optional).
+There is one special thing that I've run into when installing L<Inline::Java>, and thus L<WWW::HtmlUnit>, which is telling the installer where to find your java home. It turns out this is really really easy, just define the JAVA_HOME environment variable before you start your CPAN shell / installer. From Debian/Ubuntu, I do:
 
   sudo apt-get install default-jdk
   sudo JAVA_HOME=/usr/lib/jvm/default-java cpanm WWW::HtmlUnit
@@ -169,7 +169,7 @@ sub new {
 
 =head1 DEPENDENCIES
 
-When installed using the CPAN shell, all dependencies besides java itself will be installed. This includes the HtmlUnit jar files, and in fact those files make up the bulk of the distribution.
+When installed using the CPAN shell, all dependencies besides java itself will be installed. This includes the HtmlUnit jar files, and in fact those files make up the bulk of the distribution, byte-wise.
 
 =head1 TIPS
 
