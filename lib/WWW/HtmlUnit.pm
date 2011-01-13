@@ -20,38 +20,24 @@ WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.8 library
 
 =head1 DESCRIPTION
 
-This is a wrapper around the HtmlUnit library (HtmlUnit version 2.8 for this
-release). It includes the HtmlUnit jar itself and it's dependencies. All this
-library really does is find the jars and load them up using L<Inline::Java>.
+This is a wrapper around the HtmlUnit library (HtmlUnit version 2.8 for this release). It includes the HtmlUnit jar itself and it's dependencies. All this library really does is find the jars and load them up using L<Inline::Java>.
 
-The reason all this is interesting? HtmlUnit has very good javascript support,
-so you can automate, scrape, or test javascript-required websites.
+The reason all this is interesting? HtmlUnit has very good javascript support, so you can automate, scrape, or test javascript-required websites.
 
-See especially the HtmlUnit documentation on their site for deeper API
-documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
+See especially the HtmlUnit documentation on their site for deeper API documentation, L<http://htmlunit.sourceforge.net/apidocs/>.
 
 =head1 INSTALLING
 
-There are two problems that I run into when installing L<Inline::Java>, and
-thus L<WWW::HtmlUnit>, which is telling the installer where to find your java
-home and that the L<Inline::Java> test suite is broken. It turns out this is
-really really easy, just define the JAVA_HOME environment variable before you
-start your CPAN shell / installer. And for the L<Java::Inline> test suite...
-well just skip it (using -n with cpanm). I do this in Debian/Ubuntu:
+There is one special thing that I've run into when installing L<Inline::Java>, and thus L<WWW::HtmlUnit>, which is telling the installer where to find your java home. It turns out this is really really easy, just define the JAVA_HOME environment variable before you start your CPAN shell / installer (sudo optional).
 
-  apt-get install default-jdk
-  JAVA_HOME=/usr/lib/jvm/default-java cpanm -n Inline::Java
-  cpanm WWW::HtmlUnit
+  sudo apt-get install default-jdk
+  sudo JAVA_HOME=/usr/lib/jvm/default-java cpanm WWW::HtmlUnit
 
 and everything works the way I want!
 
-NOTE: I've also had good success installing the beta version of
-L<Inline::Java>, at the time of the writing version 0.52_90. I didn't have to
-pass the '-n' to bypass the test suite with the beta version.
-
 =head1 DOCUMENTATION
 
-You can get the bulk of the documentation directly from the L<HtmlUnit apidoc site|http://htmlunit.sourceforge.net/apidocs/index.html>. Since WWW::HtmlUnit is mostly a wrapper around the real Java API, what you actually have to do is translate some of the java notation into perl notation. Mostly this is replacing '.' with '->'.
+You can get the bulk of the documentation directly from the L<HtmlUnit apidoc site|http://htmlunit.sourceforge.net/apidocs/>. Since WWW::HtmlUnit is mostly a wrapper around the real Java API, what you actually have to do is translate some of the java notation into perl notation. Mostly this is replacing '.' with '->'.
 
 Key classes that you might want to look at:
 
@@ -71,15 +57,14 @@ An individual HTML element (node).
 
 =back
 
-Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a
-little like L<WWW::Mechanize>, but not really.
+Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a little like L<WWW::Mechanize>, but not really.
 
 =cut
 
 use strict;
 use warnings;
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 sub find_jar_path {
   my $self = shift;
@@ -115,27 +100,20 @@ sub collect_default_jars {
 
 =head1 MODULE IMPORT PARAMETERS
 
-If you need to include extra .jar files, and/or if you want to study more java
-classes, you can do:
+If you need to include extra .jar files, and/or if you want to study more java classes, you can do:
 
   use HtmlUnit
     jars => ['/path/to/blah.jar'],
     study => ['class.to.study'];
 
-and that will be added to the list of jars for L<Inline::Java> to autostudy,
-and add to the list of classes for L<Inline::Java> to immediately study. A
-class must be on the study list to be directly instantiated.
+and that will be added to the list of jars for L<Inline::Java> to autostudy, and add to the list of classes for L<Inline::Java> to immediately study. A class must be on the study list to be directly instantiated.
 
-Whether you ask for it or not, WebClient, BrowserVersion, and Cookie (each in
-the com.gargoylesoftware.htmlunit package) are studied. You can get to studied
-classes by adding WWW::HtmlUnit:: to their package name. So, you could make a
-cookie like this:
+Whether you ask for it or not, WebClient, BrowserVersion, and Cookie (each in the com.gargoylesoftware.htmlunit package) are studied. You can get to studied classes by adding WWW::HtmlUnit:: to their package name. So, you could make a cookie like this:
 
   my $cookie = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::Cookie->new($name, $value);
   $webClient->getCookieManager->addCookie($cookie);
 
-Which is, incidentally, just the sort of thing that I should wrap in
-WWW::HtmlUnit::Sweet :)
+Which is, incidentally, just the sort of thing that I should wrap in WWW::HtmlUnit::Sweet :)
 
 =cut
 
@@ -175,9 +153,7 @@ This is just a shortcut for
 
   $webClient = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::WebClient->new;
 
-The optional $browser_name allows you to specify which browser version to pass
-to the WebClient->new method. You could pass "FIREFOX_3" for example, to make
-the engine especially try to emulate Firefox 3 quirks, I imagine.
+The optional $browser_name allows you to specify which browser version to pass to the WebClient->new method. You could pass "FIREFOX_3" for example, to make the engine especially try to emulate Firefox 3 quirks, I imagine.
 
 =cut
 
@@ -193,23 +169,32 @@ sub new {
 
 =head1 DEPENDENCIES
 
-When installed using the CPAN shell, all dependencies besides java itself will
-be installed. This includes the HtmlUnit jar files, and in fact those files
-make up the bulk of the distribution.
+When installed using the CPAN shell, all dependencies besides java itself will be installed. This includes the HtmlUnit jar files, and in fact those files make up the bulk of the distribution.
 
 =head1 TIPS
 
-How do I do HTTP authentication?
+=head2 Working with java list/collections
+
+When you get a java list, it is actually an object-thingie. You gotta call C<< ->toArray() >> on it, and then you'll get a lovely perl arrayref, which is most likely what you wanted in the first place. I am open to suggestions for a mass work-around for this.
+
+
+=head2 HTTP Authentication
 
   my $credentialsProvider = $webclient->getCredentialsProvider;                           
   $credentialsProvider->addCredentials($username, $password);                
 
-How do I turn off SSL certificate checking?
+=head2 Disable SSL certificate checking
 
   $webclient->setUseInsecureSSL(1);
 
-Need to handle alerts or confirmation dialogs? We (thanks lungching!) wrote a
-wee bit of java to make this easy. For now, see L<t/03_clickhandler.t>.
+=head2 Handling alerts and confirmations
+
+We (thanks lungching!) wrote a wee bit of java to make this easy. Though I admit that it could be a bit more... perlish. For a full example, see L<t/03_clickhandler.t>.
+
+  my $alert_handler = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::CollectingAlertHandler->new();
+  $webClient->setAlertHandler($alert_handler);
+  # ...
+  my $alert_arrayref = $alert_handler->getCollectedAlerts->toArray();
 
 =head1 TODO
 
@@ -233,7 +218,7 @@ L<WWW::HtmlUnit::Sweet>, L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2009-2010 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+  Copyright (c) 2009-2011 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
   modify it under the same terms as Perl itself.
 
