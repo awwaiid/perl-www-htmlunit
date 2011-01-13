@@ -1,7 +1,6 @@
 #!/usr/bin/perl
 
 use Test::More tests => 8;
-use perl5i::2;
 use Data::Dumper;
 
 use WWW::HtmlUnit;

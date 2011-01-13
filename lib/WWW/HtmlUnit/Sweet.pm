@@ -19,10 +19,7 @@ WWW::HtmlUnit::Sweet - Wrapper around WWW::HtmlUnit to add some sweetness
 
 =head1 DESCRIPTION
 
-Using L<WWW::HtmlUnit> as a foundation, this adds some convenience things. The
-main addition is that the $agent you get from ->new does some AUTOLOAD things
-to allow you to treat the $agent as either a browser, a window, or a page. That
-way you can treat it a lot more like a L<WWW::Mechanize> object.
+Using L<WWW::HtmlUnit> as a foundation, this adds some convenience things. The main addition is that the $agent you get from ->new does some AUTOLOAD things to allow you to treat the $agent as either a browser, a window, or a page. That way you can treat it a lot more like a L<WWW::Mechanize> object.
 
 This module might change drastically, buyer beware!
 
@@ -56,9 +53,7 @@ BEGIN {
 
 =head2 $agent = WWW::HtmlUnit::Sweet->new
 
-Create a new sweet agent. Use this kinda like looking at a browser on the
-screen. The methods you call will be invoked (if possible) on the current
-browser, window, page, or focused element.
+Create a new sweet agent. Use this kinda like looking at a browser on the screen. The methods you call will be invoked (if possible) on the current browser, window, page, or focused element.
 
 The 'new' method can also take a browser version and a starting url, like this:
 
@@ -80,11 +75,7 @@ sub new {
 
 =head2 $agent->wait_for(sub { ... }, $timeout)
 
-Execute the provided sub once a second until it returns true, or until the the
-timeout has been reached. If a timeout isn't passed, it will default to 10
-seconds (which you can change by setting C<<
-$WWW::HtmlUnit::Sweet::default_timeout >>). This is handy for waiting for the
-page to finish executing some javascript, or loading.
+Execute the provided sub once a second until it returns true, or until the the timeout has been reached. If a timeout isn't passed, it will default to 10 seconds (which you can change by setting C<< $WWW::HtmlUnit::Sweet::default_timeout >>). This is handy for waiting for the page to finish executing some javascript, or loading.
 
 Example:
 
@@ -110,12 +101,7 @@ sub wait_for {
 
 =head2 AUTOLOAD, aka $agent->whatever(..)
 
-This is where the sweetness starts kicking in. First it will try to call
-->whatever on the browser, and if there is no method named 'whatever' there it
-will be called on the current window, and if there is no method named
-'whatever' there it will be called on the current page in that window, and if
-there is no method 'whatever' there it will be called on the currently focused
-element.
+This is where the sweetness starts kicking in. First it will try to call ->whatever on the browser, and if there is no method named 'whatever' there it will be called on the current window, and if there is no method named 'whatever' there it will be called on the current page in that window, and if there is no method 'whatever' there it will be called on the currently focused element.
 
 Examples:
 
@@ -131,8 +117,7 @@ Examples:
   # Click on the currently focused element
   $agent->click;
 
-This scheme works quite well because HtmlUnit itself just so happens to not
-overlap their method names between different classes. Lucky us!
+This scheme works quite well because HtmlUnit itself just so happens to not overlap their method names between different classes. Lucky us!
 
 =cut
 
@@ -201,7 +186,7 @@ L<WWW::HtmlUnit>
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2009-2010 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+  Copyright (c) 2009-2011 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
   modify it under the same terms as Perl itself.
 
