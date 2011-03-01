@@ -1,5 +1,9 @@
 Revision history for Perl extension WWW::HtmlUnit.
 
+0.15 2011.02.28
+  - Pass import (use) parameters through to Inline::Java
+  - Add WWW::HtmlUnit::Sweet parameters for stderr handling
+
 0.14 2011.01.12
   - Documentation updates (minor)
   - Fix a test
