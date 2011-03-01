@@ -113,7 +113,7 @@ Whether you ask for it or not, WebClient, BrowserVersion, and Cookie (each in th
   my $cookie = WWW::HtmlUnit::com::gargoylesoftware::htmlunit::Cookie->new($name, $value);
   $webClient->getCookieManager->addCookie($cookie);
 
-Which is, incidentally, just the sort of thing that I should wrap in WWW::HtmlUnit::Sweet :)
+Which is, incidentally, just the sort of thing that I should wrap in WWW::HtmlUnit::Sweet or elsewhere, 'cause that is UGLY!
 
 =cut
 
