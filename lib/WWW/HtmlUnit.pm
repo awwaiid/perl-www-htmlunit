@@ -123,6 +123,7 @@ sub import {
   my $custom_jars = "";
   if ($parameters{'jars'}) {
       $custom_jars = join(':', @{$parameters{'jars'}});
+      delete $parameters{'jars'};
   }
 
   my @STUDY = (
@@ -134,6 +135,7 @@ sub import {
   );    
   if ($parameters{'study'}) {
       push(@STUDY, @{$parameters{'study'}});
+      delete $parameters{'study'};
   }
 
   require Inline;
@@ -141,7 +143,8 @@ sub import {
     Java => 'STUDY',
     STUDY => \@STUDY,
     AUTOSTUDY => 1,
-    CLASSPATH => collect_default_jars() . ":" . $custom_jars
+    CLASSPATH => collect_default_jars() . ":" . $custom_jars,
+    %parameters
   );
 }
 
