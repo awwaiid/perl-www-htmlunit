@@ -100,6 +100,8 @@ sub collect_default_jars {
 
 =head1 MODULE IMPORT PARAMETERS
 
+In general, any parameters you pass while importing ('use'-ing) L<WWW::HtmlUnit> will be passed on to L<Inline::Java>. A handy one is the 'DIRECTORY' parameter, for example. A few parameters are handled specially, however.
+
 If you need to include extra .jar files, and/or if you want to study more java classes, you can do:
 
   use HtmlUnit
