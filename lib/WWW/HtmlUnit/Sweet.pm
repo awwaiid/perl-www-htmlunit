@@ -86,7 +86,9 @@ sub import {
 
     # So we save STDERR, then redirect it
 
-    open SAVEERR, '>&STDERR';
+    no warnings; # stop complaint about SAVEERR never being used again
+    open SAVEERR, '>&', STDERR;
+    use warnings;
     close STDERR;
     open STDERR, '>&', $error_fh;
  
@@ -96,7 +98,7 @@ sub import {
 
     # Now put STDERR back!
     close STDERR;
-    open STDERR, '>&SAVEERR';
+    open STDERR, '>&', SAVEERR;
 	}
 
 }
