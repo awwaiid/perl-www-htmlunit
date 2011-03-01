@@ -23,7 +23,31 @@ Using L<WWW::HtmlUnit> as a foundation, this adds some convenience things. The m
 
 This module might change drastically, buyer beware!
 
-=head1 METHODS
+=head1 IMPORT PARAMETERS
+
+When you 'use' this module, you can pass some parameters. Any parameter that L<WWW::HtmlUnit::Sweet> doesn't use will be passed on to L<WWW::HtmlUnit>, or ultimately L<Inline::Java>.
+
+=over 4
+
+=item * show_errors - Flag to stop the supression of stderr
+
+=item * error_filename - Filename to append stderr to
+
+=item * error_fh - Filehandle to append stderr to
+
+=item * errors_to_tmpfile - Send stderr to a temporary file (L<IO::File>)
+
+=back 4
+
+Useful examples:
+
+  # Show errors on STDERR
+  use WWW::HtmlUnit::Sweet show_errors => 1;
+
+  # Append errors to /tmp/errors.txt
+  use WWW::HtmlUnit::Sweet error_filename => '/tmp/errors.txt';
+
+Note that if you don't pass anything, errors will be sent to /dev/null (or a temporary file if you don't have /dev/null).
 
 =cut
 
@@ -32,24 +56,52 @@ use warnings;
 
 use UNIVERSAL qw/isa can/;
 
-# This will be removed once WWW:HtmlUnit supports quiet-mode
-# Also... I think maybe it doesn't really work!
-my $saved_stderr;
-our $error_output;
-BEGIN {
-	my $hide_errors = 1;
-	if($hide_errors) {
-		open $saved_stderr, '>&STDERR';
-		close STDERR;
-		open STDERR, '>', \$error_output;
-		eval "use WWW::HtmlUnit";
-		*STDERR = $saved_stderr;
-	} else {
-		eval "use WWW::HtmlUnit";
+# Hold our error filehandle
+our $error_fh;
+
+sub import {
+  my $class = shift;
+  my %parameters = @_;
+
+  if($parameters{show_errors}) {
+    delete $parameters{show_errors};
+    require WWW::HtmlUnit;
+    WWW::HtmlUnit->import( %parameters );
+  } else {
+    if($parameters{error_filename}) {
+      open $error_fh, '>>', $parameters{error_filename}
+        or die "Error opening $parameters{error_filename}, $!\n";
+      delete $parameters{error_filename};
+    } elsif($parameters{error_fh}) {
+      $error_fh = $parameters{error_fh};
+      delete $parameters{error_fh};
+    } elsif($parameters{errors_to_tmpfile} || ! -c '/dev/null') {
+      require IO::File;
+      $error_fh = IO::File->new_tmpfile;
+      delete $parameters{errors_to_tmpfile};
+    } else {
+      open $error_fh, '>', '/dev/null'
+        or die "Error opening $parameters{error_filename}, $!\n";
+    }
+
+    # So we save STDERR, then redirect it
+
+    open SAVEERR, '>&STDERR';
+    close STDERR;
+    open STDERR, '>&', $error_fh;
+ 
+    # Now Inline::Java will use our special filehandle instead of STDERR
+    require WWW::HtmlUnit;
+    WWW::HtmlUnit->import( %parameters );
+
+    # Now put STDERR back!
+    close STDERR;
+    open STDERR, '>&SAVEERR';
 	}
+
 }
-# It would normally be just:
-# use WWW::HtmlUnit;
+
+=head1 METHODS
 
 =head2 $agent = WWW::HtmlUnit::Sweet->new
 
@@ -128,6 +180,7 @@ sub AUTOLOAD {
 	my $method = $AUTOLOAD; $method =~ s/.*:://;
 	return if $method eq 'DESTROY';
 	my $retval = eval {
+    
     my $browser = $self->{browser};
     my $window = $browser && $browser->getCurrentWindow;
     my $page = $window && $window->getEnclosedPage;
