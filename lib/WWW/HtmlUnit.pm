@@ -76,25 +76,24 @@ sub find_jar_path {
 sub collect_default_jars {
   my $jar_path = find_jar_path();
   return join ':', map { "$jar_path/$_" } qw(
-    apache-mime4j-0.6.jar
     commons-codec-1.4.jar
     commons-collections-3.2.1.jar
-    commons-io-1.4.jar
-    commons-lang-2.4.jar
+    commons-io-2.0.1.jar
+    commons-lang-2.6.jar
     commons-logging-1.1.1.jar
     cssparser-0.9.5.jar
-    htmlunit-2.8.jar
-    htmlunit-core-js-2.8.jar
-    httpclient-4.0.1.jar
-    httpcore-4.0.1.jar
-    httpmime-4.0.1.jar
-    nekohtml-1.9.14.jar
+    htmlunit-2.9-SNAPSHOT.jar
+    htmlunit-confirmhandler-2.8.jar
+    htmlunit-core-js-2.9-SNAPSHOT.jar
+    httpclient-4.1.1.jar
+    httpcore-4.1.jar
+    httpmime-4.1.1.jar
+    nekohtml-1.9.15-20110526.132024-4.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar
     xercesImpl-2.9.1.jar
     xml-apis-1.3.04.jar
-    htmlunit-confirmhandler-2.8.jar
   );
 }
 
