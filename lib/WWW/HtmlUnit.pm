@@ -64,7 +64,7 @@ Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a litt
 use strict;
 use warnings;
 
-our $VERSION = '0.15';
+our $VERSION = '0.16_01';
 
 sub find_jar_path {
   my $self = shift;
