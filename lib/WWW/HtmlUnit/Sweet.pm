@@ -188,17 +188,23 @@ sub AUTOLOAD {
     my $page = $window && $window->getEnclosedPage;
     my $element = $page && $page->getFocusedElement;
 
+    my $result;
 		if($browser && $browser->can($method)) {
-			return $browser->$method(@_);
+			$result = $browser->$method(@_);
 		} elsif($window && $window->can($method)) {
-			return $window->$method(@_);
+			$result = $window->$method(@_);
 		} elsif($page && $page->can($method)) {
-			return $page->$method(@_);
+			$result = $page->$method(@_);
 		} elsif($element && $element->can($method)) {
-			return $element->$method(@_);
+			$result = $element->$method(@_);
 		} else {
 			die "Method $method not found!";
 		}
+    if(ref $result && $result->can('toArray')) {
+      return $result->toArray;
+    } else {
+      return $result;
+    }
 	};
 	if($@ && ref($@) =~ /Exception/) {
 		print STDERR "HtmlUnit ERROR: " . $@->getMessage . "\n";
