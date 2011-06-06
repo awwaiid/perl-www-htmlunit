@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.8 library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.9 library
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,7 @@ Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a litt
 use strict;
 use warnings;
 
-our $VERSION = '0.16_01';
+our $VERSION = '0.16_02';
 
 sub find_jar_path {
   my $self = shift;
