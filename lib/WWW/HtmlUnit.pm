@@ -20,7 +20,7 @@ WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.8 library
 
 =head1 DESCRIPTION
 
-This is a wrapper around the HtmlUnit library (HtmlUnit version 2.8 for this release). It includes the HtmlUnit jar itself and it's dependencies. All this library really does is find the jars and load them up using L<Inline::Java>.
+This is a wrapper around the HtmlUnit library (HtmlUnit version 2.9-SNAPSHOT (2011.06.05) for this release). It includes the HtmlUnit jar itself and it's dependencies. All this library really does is find the jars and load them up using L<Inline::Java>.
 
 The reason all this is interesting? HtmlUnit has very good javascript support, so you can automate, scrape, or test javascript-required websites.
 
