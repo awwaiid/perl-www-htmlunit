@@ -171,6 +171,8 @@ Examples:
 
 This scheme works quite well because HtmlUnit itself just so happens to not overlap their method names between different classes. Lucky us!
 
+Note: We also call ->toArray on results if needed. Probably at some point we'll get ALL array-like results from HtmlUnit to auto-execute ->toArray.
+
 =cut
 
 # This will make us act a bit more like Mechanize
