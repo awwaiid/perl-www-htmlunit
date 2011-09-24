@@ -64,7 +64,7 @@ Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a litt
 use strict;
 use warnings;
 
-our $VERSION = '0.16_02';
+our $VERSION = '0.16';
 
 sub find_jar_path {
   my $self = shift;
@@ -82,13 +82,13 @@ sub collect_default_jars {
     commons-lang-2.6.jar
     commons-logging-1.1.1.jar
     cssparser-0.9.5.jar
-    htmlunit-2.9-SNAPSHOT.jar
+    htmlunit-2.9.jar
+    htmlunit-core-js-2.9.jar
     htmlunit-confirmhandler-2.8.jar
-    htmlunit-core-js-2.9-SNAPSHOT.jar
-    httpclient-4.1.1.jar
-    httpcore-4.1.jar
-    httpmime-4.1.1.jar
-    nekohtml-1.9.15-20110526.132024-4.jar
+    httpclient-4.1.2.jar
+    httpcore-4.1.2.jar
+    httpmime-4.1.2.jar
+    nekohtml-1.9.15.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar

@@ -54,8 +54,6 @@ Note that if you don't pass anything, errors will be sent to /dev/null (or a tem
 use strict;
 use warnings;
 
-use UNIVERSAL qw/isa can/;
-
 # Hold our error filehandle
 our $error_fh;
 
