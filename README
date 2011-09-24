@@ -40,20 +40,27 @@ INSTALLING
     and everything works the way I want!
 
 DOCUMENTATION
-    You can get the bulk of the documentation directly from the <HtmlUnit
-    apidoc site>. Since WWW::HtmlUnit is mostly a wrapper around the real
-    Java API, what you actually have to do is translate some of the java
-    notation into perl notation. Mostly this is replacing '.' with '->'.
+    You can get the bulk of the documentation directly from the HtmlUnit
+    apidoc site <http://htmlunit.sourceforge.net/apidocs/>. Since
+    WWW::HtmlUnit is mostly a wrapper around the real Java API, what you
+    actually have to do is translate some of the java notation into perl
+    notation. Mostly this is replacing '.' with '->'.
 
     Key classes that you might want to look at:
 
-    <WebClient>
+    WebClient
+    <http://htmlunit.sourceforge.net/apidocs/com/gargoylesoftware/htmlunit/W
+    ebClient.html>
         Represents a web browser. This is what "WWW::HtmlUnit->new" returns.
 
-    <HtmlPage>
+    HtmlPage
+    <http://htmlunit.sourceforge.net/apidocs/com/gargoylesoftware/htmlunit/h
+    tml/HtmlPage.html>
         A single HTML Page.
 
-    <HtmlElement>
+    HtmlElement
+    <http://htmlunit.sourceforge.net/apidocs/com/gargoylesoftware/htmlunit/h
+    tml/HtmlElement.html>
         An individual HTML element (node).
 
     Also see WWW::HtmlUnit::Sweet for a way to pretend that HtmlUnit works a
