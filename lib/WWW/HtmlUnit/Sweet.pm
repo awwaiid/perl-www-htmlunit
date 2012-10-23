@@ -144,7 +144,7 @@ sub wait_for {
   my ($agent, $subref, $timeout) = @_;
   $timeout ||= $default_timeout;
   while($timeout) {
-    return if eval { $subref->() };
+    return if eval { $subref->() } && ! $@;
     sleep 1;
     $timeout--;
   }
