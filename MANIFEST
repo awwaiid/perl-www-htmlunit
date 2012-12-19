@@ -11,6 +11,7 @@ lib/WWW/HtmlUnit/jar/commons-lang3-3.1.jar
 lib/WWW/HtmlUnit/jar/commons-logging-1.1.1.jar
 lib/WWW/HtmlUnit/jar/cssparser-0.9.8.jar
 lib/WWW/HtmlUnit/jar/htmlunit-2.11.jar
+lib/WWW/HtmlUnit/jar/htmlunit-confirmhandler-2.8.jar
 lib/WWW/HtmlUnit/jar/htmlunit-core-js-2.11.jar
 lib/WWW/HtmlUnit/jar/httpclient-4.2.2.jar
 lib/WWW/HtmlUnit/jar/httpcore-4.2.2.jar
