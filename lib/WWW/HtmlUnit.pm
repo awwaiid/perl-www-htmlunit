@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.10 library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.11 library
 
 =head1 SYNOPSIS
 
@@ -64,8 +64,7 @@ Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a litt
 use strict;
 use warnings;
 
-our $VERSION = '0.18';
-
+our $VERSION = '0.20';
 
 sub find_jar_path {
   my $self = shift;
@@ -78,24 +77,27 @@ our $classpath_separator = $^O =~ /win/i ? ";" : ":";
 sub collect_default_jars {
   my $jar_path = find_jar_path();
   return join $classpath_separator, map { "$jar_path/$_" } qw(
-    commons-codec-1.6.jar
+    commons-codec-1.7.jar
     commons-collections-3.2.1.jar
-    commons-io-2.2.jar
+    commons-io-2.4.jar
     commons-lang3-3.1.jar
     commons-logging-1.1.1.jar
-    cssparser-0.9.7.jar
-    htmlunit-2.10.jar
-    htmlunit-confirmhandler-2.8.jar
-    htmlunit-core-js-2.10.jar
-    httpclient-4.2.1.jar
-    httpcore-4.2.1.jar
-    httpmime-4.2.1.jar
-    nekohtml-1.9.16.jar
+    cssparser-0.9.8.jar
+    htmlunit-2.11.jar
+    htmlunit-core-js-2.11.jar
+    httpclient-4.2.2.jar
+    httpcore-4.2.2.jar
+    httpmime-4.2.2.jar
+    jetty-http-8.1.7.v20120910.jar
+    jetty-io-8.1.7.v20120910.jar
+    jetty-util-8.1.7.v20120910.jar
+    jetty-websocket-8.1.7.v20120910.jar
+    nekohtml-1.9.17.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar
-    xercesImpl-2.9.1.jar
-    xml-apis-1.3.04.jar
+    xercesImpl-2.10.0.jar
+    xml-apis-1.4.01.jar
   );
 }
 
@@ -224,14 +226,14 @@ L<WWW::HtmlUnit::Sweet>, L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2009-2011 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+  Copyright (c) 2009-2012 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
   modify it under the same terms as Perl itself.
 
   HtmlUnit library includes the following copyright:
 
     /*
-     * Copyright (c) 2002-2010 Gargoyle Software Inc.
+     * Copyright (c) 2002-2012 Gargoyle Software Inc.
      *
      * Licensed under the Apache License, Version 2.0 (the "License");
      * you may not use this file except in compliance with the License.
