@@ -85,6 +85,7 @@ sub collect_default_jars {
     cssparser-0.9.8.jar
     htmlunit-2.11.jar
     htmlunit-core-js-2.11.jar
+    htmlunit-confirmhandler-2.8.jar
     httpclient-4.2.2.jar
     httpcore-4.2.2.jar
     httpmime-4.2.2.jar
