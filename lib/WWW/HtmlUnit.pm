@@ -64,7 +64,8 @@ Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a litt
 use strict;
 use warnings;
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
+
 
 sub find_jar_path {
   my $self = shift;
@@ -73,9 +74,10 @@ sub find_jar_path {
   return $path;
 }
 
+our $classpath_separator = $^O =~ /win/i ? ";" : ":";
 sub collect_default_jars {
   my $jar_path = find_jar_path();
-  return join ':', map { "$jar_path/$_" } qw(
+  return join $classpath_separator, map { "$jar_path/$_" } qw(
     commons-codec-1.6.jar
     commons-collections-3.2.1.jar
     commons-io-2.2.jar
@@ -123,7 +125,7 @@ sub import {
   my %parameters = @_;
   my $custom_jars = "";
   if ($parameters{'jars'}) {
-      $custom_jars = join(':', @{$parameters{'jars'}});
+      $custom_jars = join($classpath_separator, @{$parameters{'jars'}});
       delete $parameters{'jars'};
   }
 
@@ -144,7 +146,7 @@ sub import {
     Java => 'STUDY',
     STUDY => \@STUDY,
     AUTOSTUDY => 1,
-    CLASSPATH => collect_default_jars() . ":" . $custom_jars,
+    CLASSPATH => collect_default_jars() . $classpath_separator . $custom_jars,
     %parameters
   );
 }
