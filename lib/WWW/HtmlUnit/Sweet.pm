@@ -231,6 +231,12 @@ sub get_option {
 	die "Must pass either text or value";
 }
 
+package WWW::HtmlUnit::java::lang::Object;
+
+sub sweeten {
+  return WWW::HtmlUnit::Sweet->new();
+}
+
 =head1 TODO
 
 Add more documentation and examples and sweetness :)

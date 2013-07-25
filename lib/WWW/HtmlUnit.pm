@@ -82,18 +82,18 @@ sub collect_default_jars {
     commons-io-2.4.jar
     commons-lang3-3.1.jar
     commons-logging-1.1.1.jar
-    cssparser-0.9.8.jar
-    htmlunit-2.11.jar
-    htmlunit-core-js-2.11.jar
+    cssparser-0.9.9.jar
+    htmlunit-2.12.jar
     htmlunit-confirmhandler-2.8.jar
-    httpclient-4.2.2.jar
+    htmlunit-core-js-2.12.jar
+    httpclient-4.2.3.jar
     httpcore-4.2.2.jar
-    httpmime-4.2.2.jar
-    jetty-http-8.1.7.v20120910.jar
-    jetty-io-8.1.7.v20120910.jar
-    jetty-util-8.1.7.v20120910.jar
-    jetty-websocket-8.1.7.v20120910.jar
-    nekohtml-1.9.17.jar
+    httpmime-4.2.3.jar
+    jetty-http-8.1.9.v20130131.jar
+    jetty-io-8.1.9.v20130131.jar
+    jetty-util-8.1.9.v20130131.jar
+    jetty-websocket-8.1.9.v20130131.jar
+    nekohtml-1.9.18.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar
