@@ -8,5 +8,10 @@ WriteMakefile(
     PREREQ_PM        => {
       'Inline::Java' => 0.53,
     },
+    META_MERGE       => {
+        resources => {
+            repository => 'https://github.com/awwaiid/perl-www-htmlunit',
+        },
+    },
 );
 
