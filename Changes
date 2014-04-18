@@ -1,5 +1,8 @@
 Revision history for Perl extension WWW::HtmlUnit.
 
+0.22 2014.04.17
+  - Update to HtmlUnit 2.14
+
 0.21 2013.07.25
   - Update to HtmlUnit 2.12
 

@@ -2,7 +2,7 @@ package WWW::HtmlUnit;
 
 =head1 NAME
 
-WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.12 library
+WWW::HtmlUnit - Inline::Java based wrapper of the HtmlUnit v2.14 library
 
 =head1 SYNOPSIS
 
@@ -64,7 +64,7 @@ Also see L<WWW::HtmlUnit::Sweet> for a way to pretend that HtmlUnit works a litt
 use strict;
 use warnings;
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 sub find_jar_path {
   my $self = shift;
@@ -77,27 +77,27 @@ our $classpath_separator = $^O =~ /win/i ? ";" : ":";
 sub collect_default_jars {
   my $jar_path = find_jar_path();
   return join $classpath_separator, map { "$jar_path/$_" } qw(
-    commons-codec-1.7.jar
+    commons-codec-1.9.jar
     commons-collections-3.2.1.jar
     commons-io-2.4.jar
-    commons-lang3-3.1.jar
-    commons-logging-1.1.1.jar
-    cssparser-0.9.9.jar
-    htmlunit-2.12.jar
+    commons-lang3-3.2.1.jar
+    commons-logging-1.1.3.jar
+    cssparser-0.9.13.jar
+    htmlunit-2.14.jar
     htmlunit-confirmhandler-2.8.jar
-    htmlunit-core-js-2.12.jar
-    httpclient-4.2.3.jar
-    httpcore-4.2.2.jar
-    httpmime-4.2.3.jar
-    jetty-http-8.1.9.v20130131.jar
-    jetty-io-8.1.9.v20130131.jar
-    jetty-util-8.1.9.v20130131.jar
-    jetty-websocket-8.1.9.v20130131.jar
-    nekohtml-1.9.18.jar
+    htmlunit-core-js-2.14.jar
+    httpclient-4.3.2.jar
+    httpcore-4.3.1.jar
+    httpmime-4.3.2.jar
+    jetty-http-8.1.14.v20131031.jar
+    jetty-io-8.1.14.v20131031.jar
+    jetty-util-8.1.14.v20131031.jar
+    jetty-websocket-8.1.14.v20131031.jar
+    nekohtml-1.9.20.jar
     sac-1.3.jar
     serializer-2.7.1.jar
     xalan-2.7.1.jar
-    xercesImpl-2.10.0.jar
+    xercesImpl-2.11.0.jar
     xml-apis-1.4.01.jar
   );
 }
@@ -227,14 +227,14 @@ L<WWW::HtmlUnit::Sweet>, L<http://htmlunit.sourceforge.net/>, L<Inline::Java>
 
 =head1 COPYRIGHT
 
-  Copyright (c) 2009-2012 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
+  Copyright (c) 2009-2014 Brock Wilcox <awwaiid@thelackthereof.org>. All rights
   reserved.  This program is free software; you can redistribute it and/or
   modify it under the same terms as Perl itself.
 
   HtmlUnit library includes the following copyright:
 
     /*
-     * Copyright (c) 2002-2012 Gargoyle Software Inc.
+     * Copyright (c) 2002-2014 Gargoyle Software Inc.
      *
      * Licensed under the Apache License, Version 2.0 (the "License");
      * you may not use this file except in compliance with the License.
